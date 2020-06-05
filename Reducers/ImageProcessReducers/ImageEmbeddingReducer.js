@@ -1,19 +1,17 @@
 import { Reducer } from 'redux'
-import {LOAD_EMBEDDING_INFORMATION,EMBEDDING_INFORMATION_LOADED,EMBEDDING_IMAGE_LOADED,
-    EMBEDDING_IMAGE_LOADED_FAILED,EMBEDDING_INFORMATION_LOADED_FAILED,LOAD_EMBEDDING_IMAGE,
+import {EMBEDDING_IMAGE_LOADED, REQUEST_EMBEDDING,REQUEST_EMBEDDING_FAIL,
+    EMBEDDING_IMAGE_LOADED_FAILED,LOAD_EMBEDDING_IMAGE,
     } from '../../Actions/ImageProcessActions/ImageEmbeddingAction'
 
 const defaultState = {
-    dataloading:false,
-    dataloaded:false,
+    embeddingRequesting:false,
+    embeddingRequested :false,
+    embeddingRequestFail: false,
     imageLoading:false,
     imageLoaded:false,
-    dataLoadedFail:false,
     imageLoadedFail:false,
-    informationError:"",
-    imageError:"",
-    embeddingInformaiont:'',
-    embeddingImage: null,
+    errorMessage:"",
+    embeddedImage: "",
 
 }
 export default function ImageEmbeddingReducer (
@@ -22,33 +20,27 @@ export default function ImageEmbeddingReducer (
     },action
 ) {
     switch(action.type){
-        case LOAD_EMBEDDING_INFORMATION:{
+        case REQUEST_EMBEDDING:{
             return{
                 ...state,
-                dataloading:true,
+                embeddingRequesting:true,
             }
         }
-        case EMBEDDING_INFORMATION_LOADED:{
+        case REQUEST_EMBEDDING_FAIL:{
             return{
                 ...state,
-                dataloading:false,
-                dataloaded:true,
-                embeddingInformaiont: action.embeddingInformation,
+                embeddingRequested:true,
+                embeddingRequesting:false,
+                embeddingRequestFail:true,
+                errorMessage:action.message,
 
-            }
-        }
-        case EMBEDDING_INFORMATION_LOADED_FAILED:{
-            return{
-                ...state,
-                dataloaded:true,
-                dataLoadedFail:true,
-                informationError: action.message,
             }
         }
         case LOAD_EMBEDDING_IMAGE:{
             return{
                 ...state,
                 imageLoading:true,
+                embeddingRequested:true,
             }
         }
         case EMBEDDING_IMAGE_LOADED:{
@@ -56,7 +48,7 @@ export default function ImageEmbeddingReducer (
                 ...state,
                 imageLoading:false,
                 imageLoaded:true,
-                embeddingImage:action.embeddingImage
+                embeddedImage:action.embeddedImage
             }
         }
         case EMBEDDING_IMAGE_LOADED_FAILED:{
@@ -64,7 +56,7 @@ export default function ImageEmbeddingReducer (
                 ...state,
                 imageLoaded:true,
                 imageLoadedFail:true,
-                imageError:action.message
+                errorMessage:action.message
             }
         }
         default:return state

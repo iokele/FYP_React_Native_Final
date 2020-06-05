@@ -1,7 +1,7 @@
 import {ImageEmbeddingSaga} from './ImageProcessSagas/ImageEmbeddingSaga'
 import {getState} from 'redux'
 const sagas={
-    ImageEmbeddingSaga
+    ImageEmbeddingSaga,
 }
 
 export function registerWithMiddleware (middleware,store){

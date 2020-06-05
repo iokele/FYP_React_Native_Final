@@ -13,7 +13,7 @@ class Home extends React.Component{
 
     render(){
         return(
-            <Text style = {{color:'black' } }>Hello world </Text>
+            <Text style = {{color:'black' } }>Hello worlddd </Text>
         )
     }
 }

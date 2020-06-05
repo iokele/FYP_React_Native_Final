@@ -1,38 +1,55 @@
-export const LOAD_EMBEDDING_INFORMATION = 'LOAD_EMBEDDING_INFORMATION'
-export function loadEmbeddingInformation (){
-    return {
-        type: LOAD_EMBEDDING_INFORMATION,
-    }
-}
+// export const LOAD_EMBEDDING_INFORMATION = 'LOAD_EMBEDDING_INFORMATION'
+// export function loadEmbeddingInformation (){
+//     return {
+//         type: LOAD_EMBEDDING_INFORMATION,
+       
+//     }
+// }
 
-export const EMBEDDING_INFORMATION_LOADED = 'EMBEDDING_INFORMATION_LOADED'
-export function loadedEmbeddingInformation (embeddingInformation){
-    return {
-        type:EMBEDDING_INFORMATION_LOADED,
-        embeddingInformation,
-    }
-}
+// export const EMBEDDING_INFORMATION_LOADED = 'EMBEDDING_INFORMATION_LOADED'
+// export function loadedEmbeddingInformation (embeddingInformation){
+//     return {
+//         type:EMBEDDING_INFORMATION_LOADED,
+//         embeddingInformation,
+//     }
+// }
 
-export const EMBEDDING_INFORMATION_LOADED_FAILED = 'EMBEDDING_INFORMATION_LOADED_FAILED'
-export function failLoadedEmbeddingInformation (message){
+// export const EMBEDDING_INFORMATION_LOADED_FAILED = 'EMBEDDING_INFORMATION_LOADED_FAILED'
+// export function failLoadedEmbeddingInformation (message){
+//     return{
+//         type:EMBEDDING_INFORMATION_LOADED_FAILED,
+//         message
+//     }
+// }
+
+export const REQUEST_EMBEDDING ="REQUEST_EMBEDDING"
+export function requestEmbedding(userId, imageBase64, filter){
     return{
-        type:EMBEDDING_INFORMATION_LOADED_FAILED,
+        type: REQUEST_EMBEDDING,
+        userId,
+        imageBase64,
+        filter
+    }
+}
+export const REQUEST_EMBEDDING_FAIL = "REQUEST_EMBEDDING_FAIL"
+export function failRequestEmbedding(message){
+    return{
+        type:REQUEST_EMBEDDING_FAIL,
         message
     }
 }
-
 export const LOAD_EMBEDDING_IMAGE = 'LOAD_EMBEDDING_IMAGE'
-export function loadEmbeddingImage (){
+export function loadEmbeddingImage (embeddedImageID){
     return {
         type: LOAD_EMBEDDING_IMAGE,
+        embeddedImageID
     }
 }
-
 export const EMBEDDING_IMAGE_LOADED = 'EMBEDDING_IMAGE_LOADED'
-export function loadedEmbeddingImage (embeddingImage){
+export function loadedEmbeddingImage (embeddedImage){
     return {
         type:EMBEDDING_IMAGE_LOADED,
-        embeddingImage,
+        embeddedImage,
     }
 }
 

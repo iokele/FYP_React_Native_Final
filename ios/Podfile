@@ -77,6 +77,14 @@ target 'FYP_React_Native_Final' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
+  pod 'RNFS', :path => '../node_modules/react-native-fs'
+
+  pod 'react-native-webview', :path => '../node_modules/react-native-webview'
+
+  pod 'react-native-fetch-blob', :path => '../node_modules/react-native-fetch-blob'
+
+  pod 'rn-fetch-blob', :path => '../node_modules/rn-fetch-blob'
+
   target 'FYP_React_Native_FinalTests' do
     inherit! :complete
     # Pods for testing
