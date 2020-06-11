@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { List, ListItem, Thumbnail, Left, Body, Right, Button } from 'native-base';
-import MatchHeader from './src/MatchOriginalImage/MatchOriginalHeader';
+// import MatchHeader from './src/MatchOriginalImage/MatchOriginalHeader';
 
 
 // create a component
@@ -11,7 +11,6 @@ class MatchOriginalImage extends Component {
     return (
       <View style={styles.container}>
         <View style = {styles.header}>
-          <MatchHeader/>
         </View>
         <View style = {styles.listView}>
         <List>

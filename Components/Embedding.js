@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import { Image, View,StyleSheet} from 'react-native';
+import { Image, View,StyleSheet,Modal,ActivityIndicator,TouchableOpacity} from 'react-native';
 import { Container, Footer, FooterTab, Button, Icon, Text,Tab,Tabs ,ScrollableTab} from 'native-base';
 import RNFetchBlob from 'rn-fetch-blob'
 import Canvas, {Image as CanvasImage} from 'react-native-canvas'
@@ -14,6 +14,7 @@ class EmbedImage extends React.Component {
             // MAX_WIDTH : 1280,
             // MAX_HEIGHT : 720,
             // MAX_SIZE : 100000, // 100kb
+            uploaded:false,
         }
 //        this.handleClick=this.handleClick.bind(this)
     }
@@ -74,27 +75,49 @@ async getDateUri(){
 //     console.log(rootPath);
 //     console.log(base64data)
 // }
-
+    handleUpload(){
+        this.setState({uploaded:true})
+    }
     render(){
-        const {embeddingRequesting,embeddingRequested, imageLoaded,errorMessage,embeddedImage} =this.props.ImageEmbedding
+        const {embeddingRequesting,embeddingRequested, imageLoaded,errorMessage,embeddedImage,imageLoading,isFileReading} =this.props.ImageEmbedding
         const {cancelEmbedding,confirmEmbedding} =this.props
+        const {uploaded} =this.state
         return(
             <View style={styles.container}>
                 <View style = {styles.header}>
                 </View>
+                
+                <TouchableOpacity onPress={()=>this.handleUpload()}>
                 <View style = {styles.imageView}>
-                {imageLoaded&&
+                {uploaded?
                 (
-                <Image style= {styles.imageStyle} source={{uri:'data:image/jpeg;base64,'+embeddedImage}}/>
+                <Image style= {styles.imageStyle} source={require('./input7.png')}/>
+                ): (
+                    
+                        <Image style ={styles.imageStyle} source ={require('./uploadEdit.png')} />  
                 )
                 }
-                </View>
-
+                 </View>
+                 </TouchableOpacity>
+               
+                {isFileReading&&<CustomProgressBar/>}
+                {/* {uri:'data:image/jpeg;base64,'+embeddedImage} */}
               
             </View>
         )
     }
 }
+
+const CustomProgressBar = ({ visible }) => (
+    <Modal onRequestClose={() => null} visible={visible}>
+      <View style={{ flex: 1, backgroundColor: '#dcdcdc', alignItems: 'center', justifyContent: 'center' }}>
+        <View style={{ borderRadius: 10, backgroundColor: 'white', padding: 25 }}>
+          <Text style={{ fontSize: 20, fontWeight: '200' }}>Loading</Text>
+          <ActivityIndicator size="large" />
+        </View>
+      </View>
+    </Modal>
+  );
 
 const mapStateToProps =(state,ownProps) =>{
     return {
@@ -129,7 +152,7 @@ const styles = StyleSheet.create({
     },
   
     imageStyle: {
-      height: 60 + '%',
+      height: 80 + '%',
       width: 90 + '%',
       resizeMode: 'stretch'
     },

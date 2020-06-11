@@ -4,14 +4,16 @@ import { View, Text, StyleSheet } from 'react-native';
 import { Button, Icon} from 'native-base';
 
 // create a component
-export default function EmbedHeader() {
+export default class EmbedHeader extends React.Component {
+    render(){
         return (
-           <View style = {styles.header}>
-              <Button style = {styles.backIcon} dark transparent onPress = {()=>this.props.navigation.navigate("Home")}>
-                  <Icon name = "ios-arrow-back"/>
-              </Button>
-           </View>
-        );
+            <View style = {styles.header}>
+               <Button style = {styles.backIcon} dark transparent onPress = {()=>this.props.navigation.navigate("Home")}>
+                   <Icon name = "ios-arrow-back"/>
+               </Button>
+            </View>
+         );
+        }
     }
 
 

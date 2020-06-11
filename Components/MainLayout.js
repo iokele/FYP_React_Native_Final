@@ -4,9 +4,10 @@ import { Router, Scene } from 'react-native-router-flux';
 import { Text, View } from 'react-native';
 import Home from './Home'
 import EmbedImage from './Embedding'
-import Extraction from './ExtractImage'
+import Extraction from './Extraction'
 import EmbeddedReview from './EmbeddedReview'
 import EmbedDone from './EmbedDone'
+import ExtractionHeader from "./ChildComponents/Extraction/ExtractionHeader"
 import EmbedDoneHeader from "./ChildComponents/EmbedDone/EmbedDoneHeader"
 import EmbeddingHeader from './ChildComponents/Embedding/EmbeddingHeader'
 import { NavigationContainer } from '@react-navigation/native';
@@ -36,7 +37,7 @@ function MainLayout(){
                 )}/>
                 <Stack.Screen name="Extraction" component={Extraction} options={({route, navigation }) => (
                     {
-                    header:()=><Header/>,
+                    header:()=><ExtractionHeader navigation= {navigation}/>,
                     route: {route}, 
                     navigation: {navigation}}
                 )}/>

@@ -108,3 +108,10 @@ export function confirmedEmbedding (){
         type:EMBEDDING_CONFIRMED,
     }
 }
+
+export const READING_FILE ='READING_FILE'
+export function readingFile (){
+    return{
+        type:READING_FILE
+    }
+}

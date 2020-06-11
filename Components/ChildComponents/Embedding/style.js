@@ -20,6 +20,11 @@ export const styles = StyleSheet.create({
         fontSize: 20,
         paddingTop: 15
     },
+    text_review:{
+        fontSize:20,
+        paddingTop:15,
+        color:'blue'
+    },
     icon: {
         marginRight: 5,
         paddingTop: 20,

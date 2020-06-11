@@ -1,7 +1,7 @@
 import { Reducer } from 'redux'
 import {EMBEDDING_IMAGE_LOADED, REQUEST_EMBEDDING,REQUEST_EMBEDDING_FAIL,
     EMBEDDING_IMAGE_LOADED_FAILED,LOAD_EMBEDDING_IMAGE, CANCEL_EMBEDDING,CONFIRM_EMBEDDING,EMBEDDING_CANCELED,EMBEDDING_CONFIRMED, CONFIRM_FAIL
-,CANCEL_FAIL    } from '../../Actions/ImageProcessActions/ImageEmbeddingAction'
+,CANCEL_FAIL ,READING_FILE   } from '../../Actions/ImageProcessActions/ImageEmbeddingAction'
 
 const defaultState = {
     // embeddingRequesting:false,
@@ -20,6 +20,7 @@ const defaultState = {
     isConfirmFail:false,
     cancelFailMessage:"",
     confirmFailMessage:"",
+    isFileReading:false,
 
 }
 export default function ImageEmbeddingReducer (
@@ -44,10 +45,17 @@ export default function ImageEmbeddingReducer (
 
         //     }
         // }
+        case READING_FILE:{
+            return{
+                ...state,
+                isFileReading:true,
+            }
+        }
         case LOAD_EMBEDDING_IMAGE:{
             return{
                 ...state,
                 imageLoading:true,
+                
             }
         }
         case EMBEDDING_IMAGE_LOADED:{
@@ -55,6 +63,7 @@ export default function ImageEmbeddingReducer (
                 ...state,
                 imageLoading:false,
                 imageLoaded:true,
+                isFileReading:false,
                 embeddedImage:action.embeddedImage
             }
         }
@@ -130,7 +139,6 @@ export default function ImageEmbeddingReducer (
                 imageLoaded:false,
                 imageLoadedFail:false,
                 errorMessage:"",
-                embeddedImage: "",
                 isCanceling:false,
                 isConfirming:false,
                 isCanceled:false,

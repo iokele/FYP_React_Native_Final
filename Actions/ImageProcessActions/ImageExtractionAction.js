@@ -45,3 +45,26 @@ export function clearForm (){
         type: CLEAR_FORM,
     }
 }
+
+export const READING_FILE ='READING_FILE'
+export function readingFile (){
+    return{
+        type:READING_FILE
+    }
+}
+
+export const LOAD_ORIGINAL_IMAGE_LIST = 'LOAD_ORIGINAL_IMAGE_LIST'
+export function loadOrginalImageList (userId){
+    return{
+        type:LOAD_ORIGINAL_IMAGE_LIST,
+        userId
+    }
+}
+
+export const ORIGINAL_IMAGE_LIST_LOADED = 'ORIGINAL_IMAGE_LIST_LOADED'
+export function loadedOrginalImageList (imageList){
+    return{
+        type:ORIGINAL_IMAGE_LIST_LOADED,
+        imageList,
+    }
+}

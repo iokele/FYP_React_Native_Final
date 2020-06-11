@@ -6,11 +6,13 @@ import {connect} from 'react-redux'
 
 // create a component
 class Embeddone extends Component {
+  
   render() {
+    const {embeddedImage} =this.props.ImageEmbedding
     return (
       <View style={styles.container}>
         <View style = {styles.imageView}>
-          <Image style = {styles.imageStyle} source = {("./input7.png")} />
+          <Image style = {styles.imageStyle} source = {{uri:'data:image/jpeg;base64,'+embeddedImage}} />
         </View>
         <View style = {styles.footer}>
             <EmbeddoneFooter/>
@@ -38,7 +40,7 @@ const styles = StyleSheet.create({
   },
 
   imageStyle: {
-    height: 70 + '%',
+    height: 80 + '%',
     width: 90 + '%',
     resizeMode: 'stretch'
   },

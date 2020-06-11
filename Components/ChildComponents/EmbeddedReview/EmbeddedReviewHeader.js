@@ -9,18 +9,22 @@ import {requestEmbedding,cancelEmbedding,confirmEmbedding,loadEmbeddingImage} fr
  class EmbedHeader extends React.Component {
     async handleConfirm(userId){
         const {confirmEmbedding} =this.props
-        const {isComrimed,isConfirmFail} = this.props
+        const {isConrimed,isConfirmFail} = this.props
         await confirmEmbedding(userId)
-        if(isComrimed&&!isConfirmFail){
-            await this.props.navigation.navigate("EmbedDone")
-        }
+        this.props.navigation.navigate("EmbedDone")
     }
 
+   async handleCancle(){
+        const {cancelEmbedding} =this.props
+        const {isCanceled, isCancelFail} = this.props
+        cancelEmbedding(1);
+        this.props.navigation.goBack()
+    }
      render(){
         //  const {confirmEmbedding} = this.props
         return (
             <View style = {styles.header}>
-               <Button style = {styles.backIcon} dark transparent onPress = {()=>this.props.navigation.goBack()}>
+               <Button style = {styles.backIcon} dark transparent onPress = {()=>this.handleCancle()}>
                    <Icon name = "ios-arrow-back"/>
                </Button>
                <Text style = {styles.text}>

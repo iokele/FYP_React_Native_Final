@@ -1,6 +1,6 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image ,Modal,ActivityIndicator} from 'react-native';
 import {Button, Icon} from 'native-base';
 import {connect} from 'react-redux'
 // create a component
@@ -11,7 +11,7 @@ class EmbeddingReview extends Component {
         }
     }
   render() {
-    const {embeddingRequesting,embeddingRequested, imageLoaded,errorMessage,embeddedImage} =this.props.ImageEmbedding
+    const {embeddingRequesting,embeddingRequested, imageLoaded,errorMessage,embeddedImage,isCanceling,isConfirming,imageLoading} =this.props.ImageEmbedding
     return (
       <View style={styles.container}>
         <View style = {styles.header}>
@@ -26,12 +26,45 @@ class EmbeddingReview extends Component {
         </Button>
         </>)
          }
-          
+         {imageLoading&&<CustomProgressBar3/>}
+          {isCanceling&&<CustomProgressBar/>}
+          {isConfirming&&<CustomProgressBar2/>}
         </View>
+
       </View>
     );
   }
 }
+const CustomProgressBar = ({ visible }) => (
+  <Modal onRequestClose={() => null} visible={visible}>
+    <View style={{ flex: 1, backgroundColor: '#dcdcdc', alignItems: 'center', justifyContent: 'center' }}>
+      <View style={{ borderRadius: 10, backgroundColor: 'white', padding: 25 }}>
+        <Text style={{ fontSize: 20, fontWeight: '200' }}>Canceling</Text>
+        <ActivityIndicator size="large" />
+      </View>
+    </View>
+  </Modal>
+);
+const CustomProgressBar2 = ({ visible }) => (
+  <Modal onRequestClose={() => null} visible={visible}>
+    <View style={{ flex: 1, backgroundColor: '#dcdcdc', alignItems: 'center', justifyContent: 'center' }}>
+      <View style={{ borderRadius: 10, backgroundColor: 'white', padding: 25 }}>
+        <Text style={{ fontSize: 20, fontWeight: '200' }}>Confriming</Text>
+        <ActivityIndicator size="large" />
+      </View>
+    </View>
+  </Modal>
+);
+const CustomProgressBar3 = ({ visible }) => (
+  <Modal onRequestClose={() => null} visible={visible}>
+    <View style={{ flex: 1, backgroundColor: '#dcdcdc', alignItems: 'center', justifyContent: 'center' }}>
+      <View style={{ borderRadius: 10, backgroundColor: 'white', padding: 25 }}>
+        <Text style={{ fontSize: 20, fontWeight: '200' }}>Loading</Text>
+        <ActivityIndicator size="large" />
+      </View>
+    </View>
+  </Modal>
+);
 const mapStateToProps =(state,ownProps) =>{
     return {
         ImageEmbedding:state.ImageEmbedding
