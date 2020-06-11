@@ -26,17 +26,14 @@ import {
 import {Provider} from 'react-redux'
 import configureStore from './configureStore'
 import MainLayout from "./Components/MainLayout"
+import { Provider as PaperProvider } from 'react-native-paper';
+
 const store=configureStore()
 const App: () => React$Node = () => {
   return (
        <Provider store={store}>
          <StatusBar barStyle="dark-content" />
-         <SafeAreaView>
-           <View>
            <MainLayout/>
-           <Text style = {{color:'black' }} >Fuck off FYP</Text>
-           </View>
-         </SafeAreaView>
        </Provider>
 //    <>
 //      <StatusBar barStyle="dark-content" />

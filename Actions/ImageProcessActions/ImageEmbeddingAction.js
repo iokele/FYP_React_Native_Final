@@ -23,11 +23,12 @@
 // }
 
 export const REQUEST_EMBEDDING ="REQUEST_EMBEDDING"
-export function requestEmbedding(userId, imageBase64, filter){
+export function requestEmbedding(userId, imageBase64, name,filter){
     return{
         type: REQUEST_EMBEDDING,
         userId,
         imageBase64,
+        name,
         filter
     }
 }
@@ -39,10 +40,13 @@ export function failRequestEmbedding(message){
     }
 }
 export const LOAD_EMBEDDING_IMAGE = 'LOAD_EMBEDDING_IMAGE'
-export function loadEmbeddingImage (embeddedImageID){
+export function loadEmbeddingImage (userId, imageBase64, name,filter){
     return {
         type: LOAD_EMBEDDING_IMAGE,
-        embeddedImageID
+        userId,
+        imageBase64,
+        name,
+        filter
     }
 }
 export const EMBEDDING_IMAGE_LOADED = 'EMBEDDING_IMAGE_LOADED'
@@ -61,5 +65,46 @@ export function failLoadedEmbeddingImage (message){
     }
 }
 
+export const CANCEL_EMBEDDING = 'CANCEL_EMBEDDING'
+export function cancelEmbedding (userId){
+    return{
+        type:CANCEL_EMBEDDING,
+        userId
+    }
+}
+export const CANCEL_FAIL ='CANCEL_FAIL'
+export function cancelFail (message){
+    return{
+        type:CANCEL_FAIL,
+        message
+    }
+}
+export const EMBEDDING_CANCELED ='EMBEDDING_CANCELED'
+export function canceledEmbedding (){
+    return {
+        type:EMBEDDING_CANCELED,
+    }
+}
 
+export const CONFIRM_EMBEDDING ='CONFIRM_EMBEDDING'
+export function confirmEmbedding (userId){
+    return{
+        type:CONFIRM_EMBEDDING,
+        userId
+    }
+}
 
+export const CONFIRM_FAIL = 'CONFIRM_FAIL'
+export function confirmFail (message){
+    return{
+        type:CONFIRM_FAIL,
+        message,
+    }
+}
+
+export const EMBEDDING_CONFIRMED = 'EMBEDDING_CONFIRMED'
+export function confirmedEmbedding (){
+    return{
+        type:EMBEDDING_CONFIRMED,
+    }
+}

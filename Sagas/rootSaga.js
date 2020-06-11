@@ -1,7 +1,9 @@
 import {ImageEmbeddingSaga} from './ImageProcessSagas/ImageEmbeddingSaga'
+import {ImageExtractionSaga} from './ImageProcessSagas/ImageExtractionSaga'
 import {getState} from 'redux'
 const sagas={
     ImageEmbeddingSaga,
+    ImageExtractionSaga,
 }
 
 export function registerWithMiddleware (middleware,store){
