@@ -6,10 +6,14 @@ import Home from './Home'
 import EmbedImage from './Embedding'
 import Extraction from './ExtractImage'
 import EmbeddedReview from './EmbeddedReview'
+import EmbedDone from './EmbedDone'
+import EmbedDoneHeader from "./ChildComponents/EmbedDone/EmbedDoneHeader"
 import EmbeddingHeader from './ChildComponents/Embedding/EmbeddingHeader'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Header from "./ChildComponents/Home/Header"
+import MatchWithOriginal from "./MatchWithOriginal";
+import MatchWithOriginalHeader from "./ChildComponents/MatchWithOriginal/MatchWithOriginalHeader"
 import EmbeddedReviewHeader from "./ChildComponents/EmbeddedReview/EmbeddedReviewHeader"
 const Stack = createStackNavigator();
 
@@ -39,6 +43,18 @@ function MainLayout(){
                 <Stack.Screen name="EmbeddedReview" component={EmbeddedReview} options={({route, navigation }) => (
                     {
                     header:()=><EmbeddedReviewHeader navigation= {navigation}/>,
+                    route: {route}, 
+                    navigation: {navigation}}
+                )}/>
+                <Stack.Screen name="EmbedDone" component={EmbedDone} options={({route, navigation }) => (
+                    {
+                    header:()=><EmbedDoneHeader navigation= {navigation}/>,
+                    route: {route}, 
+                    navigation: {navigation}}
+                )}/>
+                <Stack.Screen name="MatchWithOriginal" component={MatchWithOriginal} options={({route, navigation }) => (
+                    {
+                    header:()=><MatchWithOriginalHeader navigation= {navigation}/>,
                     route: {route}, 
                     navigation: {navigation}}
                 )}/>

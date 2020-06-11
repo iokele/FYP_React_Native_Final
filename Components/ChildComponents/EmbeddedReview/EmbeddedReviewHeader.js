@@ -12,7 +12,7 @@ import {requestEmbedding,cancelEmbedding,confirmEmbedding,loadEmbeddingImage} fr
         const {isComrimed,isConfirmFail} = this.props
         await confirmEmbedding(userId)
         if(isComrimed&&!isConfirmFail){
-            await this.props.navigation.goBack()
+            await this.props.navigation.navigate("EmbedDone")
         }
     }
 
